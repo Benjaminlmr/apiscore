@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement - API Score</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">API Score</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="classement.html" class="active">Classement</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="results-page">
+            <div class="results-header">
+                <h1>Classement</h1>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span id="status-text">Chargement...</span>
+                </div>
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Chargement des données...</p>
+            </div>
+
+            <div id="standings-container" class="results-container" style="display: none;">
+                <table id="standings-table" class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Rang</th>
+                            <th>Équipe</th>
+                            <th>Matchs joués</th>
+                            <th>Victoires</th>
+                            <th>Nuls</th>
+                            <th>Défaites</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standings-body">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="error-container" class="error-container" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <p id="error-text">Une erreur est survenue</p>
+                <button onclick="location.reload()" class="retry-button">Réessayer</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 API Score. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script src="standings.js"></script>
+</body>
+</html>
