@@ -236,6 +236,20 @@ body {
     margin-bottom: 2rem;
 }
 
+.controls{
+    max-width:1200px; margin:0 auto 1rem; padding:0 2rem; display:flex; gap:1rem; align-items:center; justify-content:space-between;
+}
+.controls input[type="search"]{ background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); color:var(--text-primary); padding:0.6rem 1rem; border-radius:10px; min-width:260px; }
+.controls .controls-right{ display:flex; align-items:center; gap:0.5rem; color:var(--text-secondary); }
+.controls select{ padding:0.4rem 0.6rem; border-radius:8px; background:rgba(255,255,255,0.02); color:var(--text-primary); border:1px solid rgba(255,255,255,0.03); }
+
+.sortable { user-select:none; }
+.sort-indicator{ margin-left:6px; font-size:0.75rem; color:var(--text-secondary); }
+
+.pagination{ gap:0.5rem; justify-content:center; align-items:center; padding:1rem; }
+.pagination .page-btn{ background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text-primary); padding:0.4rem 0.6rem; border-radius:6px; cursor:pointer; }
+.pagination .page-btn:disabled{ opacity:0.4; cursor:default }
+
 .results-header h1 {
     font-size: 2.5rem;
     font-weight: 700;

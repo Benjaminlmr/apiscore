@@ -33,20 +33,33 @@
                 <p>Chargement des données...</p>
             </div>
 
+            <div class="controls">
+                <input id="search-input" type="search" placeholder="Rechercher équipe, date..." aria-label="Recherche" />
+                <div class="controls-right">
+                    <label for="per-page">Afficher :</label>
+                    <select id="per-page">
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+
             <div id="results-container" class="results-container" style="display: none;">
                 <table id="results-table" class="results-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Date du Match</th>
-                            <th>Équipe 1</th>
-                            <th>Équipe 2</th>
-                            <th>Score</th>
+                            <th data-key="match_id" class="sortable">ID <span class="sort-indicator"></span></th>
+                            <th data-key="match_date" class="sortable">Date <span class="sort-indicator"></span></th>
+                            <th data-key="home_team" class="sortable">Équipe 1 <span class="sort-indicator"></span></th>
+                            <th data-key="away_team" class="sortable">Équipe 2 <span class="sort-indicator"></span></th>
+                            <th data-key="score_diff" class="sortable">Score <span class="sort-indicator"></span></th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
                     </tbody>
                 </table>
+                <div class="pagination" id="pagination" style="display:none"></div>
             </div>
 
             <div id="error-container" class="error-container" style="display: none;">
