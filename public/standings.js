@@ -9,6 +9,11 @@ const errorContainer = document.getElementById('error-container');
 const standingsBody = document.getElementById('standings-body');
 const statusText = document.getElementById('status-text');
 const errorText = document.getElementById('error-text');
+const searchInput = document.getElementById('search-standings');
+
+let allTeams = [];
+let filteredTeams = [];
+let searchText = '';
 
 async function loadStandings() {
     try {
@@ -21,7 +26,10 @@ async function loadStandings() {
             return;
         }
 
-        renderStandings(data);
+        allTeams = data;
+        filteredTeams = [...allTeams];
+        renderStandings();
+        attachSearchListener();
         statusText.textContent = 'Connecté ✓';
     } catch (e) {
         console.error('Erreur chargement classement', e);
@@ -29,13 +37,13 @@ async function loadStandings() {
     }
 }
 
-function renderStandings(list) {
+function renderStandings() {
     loadingEl.style.display = 'none';
     errorContainer.style.display = 'none';
     standingsContainer.style.display = 'block';
     standingsBody.innerHTML = '';
 
-    list.forEach((team, idx) => {
+    filteredTeams.forEach((team, idx) => {
         const tr = document.createElement('tr');
         const displayName = team.name || `Équipe ${team.id}`;
         const logo = `<div class="team-logo">${getInitials(displayName)}</div>`;
@@ -50,6 +58,21 @@ function renderStandings(list) {
         `;
         standingsBody.appendChild(tr);
     });
+}
+
+function attachSearchListener() {
+    searchInput.addEventListener('input', (e) => {
+        searchText = e.target.value.toLowerCase().trim();
+        applyFilter();
+    });
+}
+
+function applyFilter() {
+    filteredTeams = allTeams.filter(team => {
+        const name = (team.name || '').toLowerCase();
+        return name.includes(searchText);
+    });
+    renderStandings();
 }
 
 function showError(message) {
