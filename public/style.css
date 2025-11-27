@@ -5,20 +5,23 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #ec4899;
+    /* Palette orientée basketball */
+    --primary-color: #e36f12; /* orange ballon */
+    --secondary-color: #b5471e; /* accent panier/arceau */
+    --wood-1: #d6a85f; /* parquet clair */
+    --wood-2: #b8843f; /* parquet foncé */
     --dark-bg: #0f172a;
-    --card-bg: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --border-color: #334155;
+    --card-bg: rgba(30,30,30,0.55);
+    --text-primary: #faf7f0;
+    --text-secondary: #e6dccb;
+    --border-color: rgba(0,0,0,0.25);
     --success-color: #10b981;
     --error-color: #ef4444;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f35 100%);
+    background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 10%), linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
@@ -146,8 +149,8 @@ body {
 }
 
 .floating-card {
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));
+    border: 1px solid rgba(0,0,0,0.25);
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
@@ -295,8 +298,8 @@ body {
 
 /* === RESULTS TABLE === */
 .results-container {
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(180deg, rgba(20,20,20,0.6), rgba(10,10,10,0.35));
+    border: 1px solid rgba(0,0,0,0.25);
     border-radius: 12px;
     overflow: hidden;
     backdrop-filter: blur(10px);
@@ -322,6 +325,32 @@ body {
 .results-table td {
     padding: 1.5rem;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* Team cell and logo */
+.team-cell { display: flex; align-items: center; gap: 0.75rem; }
+.team-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #fff;
+        background: radial-gradient(circle at 35% 35%, #ffb86b 0%, var(--primary-color) 40%, #b24b10 100%);
+        box-shadow: inset 0 -6px 8px rgba(0,0,0,0.25), 0 6px 18px rgba(0,0,0,0.35);
+        border: 2px solid rgba(0,0,0,0.25);
+        font-size: 0.95rem;
+}
+.team-name { color: var(--text-primary); font-weight:600; }
+
+/* Parquet decorative strip for hero */
+.parquet {
+    background: linear-gradient(90deg, var(--wood-1) 0%, var(--wood-2) 100%);
+    height: 8px;
+    border-radius: 6px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.05);
 }
 
 .results-table tbody tr {

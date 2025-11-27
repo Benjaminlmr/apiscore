@@ -58,19 +58,22 @@ function displayResults(matches) {
     // Ajouter chaque ligne au tableau
     matches.forEach((match, index) => {
         const row = document.createElement('tr');
-        
+
         // Utiliser les colonnes avec les noms des équipes depuis la jointure SQL
         const id = match.match_id || index + 1;
         const date = match.match_date || '-';
         const team1 = match.home_team || `Équipe ${match.home_team_id}` || 'Équipe 1';
         const team2 = match.away_team || `Équipe ${match.away_team_id}` || 'Équipe 2';
         const score = `${match.home_score || 0} - ${match.away_score || 0}`;
-        
+
+        const team1Logo = `<div class="team-logo">${getInitials(team1)}</div>`;
+        const team2Logo = `<div class="team-logo">${getInitials(team2)}</div>`;
+
         row.innerHTML = `
             <td>${id}</td>
             <td>${formatDate(date)}</td>
-            <td>${team1}</td>
-            <td>${team2}</td>
+            <td><div class="team-cell">${team1Logo}<span class="team-name">${team1}</span></div></td>
+            <td><div class="team-cell">${team2Logo}<span class="team-name">${team2}</span></div></td>
             <td class="score">${score}</td>
         `;
         tableBody.appendChild(row);
@@ -107,6 +110,13 @@ function formatDate(dateString) {
     } catch (e) {
         return dateString;
     }
+}
+
+function getInitials(name){
+    if(!name) return '';
+    const parts = String(name).trim().split(/\s+/);
+    if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
+    return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
 }
 
 // Charger les résultats au chargement de la page

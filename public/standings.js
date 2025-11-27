@@ -37,9 +37,11 @@ function renderStandings(list) {
 
     list.forEach((team, idx) => {
         const tr = document.createElement('tr');
+        const displayName = team.name || `Équipe ${team.id}`;
+        const logo = `<div class="team-logo">${getInitials(displayName)}</div>`;
         tr.innerHTML = `
             <td>${idx + 1}</td>
-            <td>${team.name || `Équipe ${team.id}`}</td>
+            <td><div class="team-cell">${logo}<span class="team-name">${displayName}</span></div></td>
             <td>${team.played || 0}</td>
             <td>${team.wins || 0}</td>
             <td>${team.draws || 0}</td>
@@ -59,3 +61,10 @@ function showError(message) {
 }
 
 document.addEventListener('DOMContentLoaded', loadStandings);
+
+function getInitials(name){
+    if(!name) return '';
+    const parts = String(name).trim().split(/\s+/);
+    if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
+    return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
+}
