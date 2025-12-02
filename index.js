@@ -138,6 +138,16 @@ app.get('/api/teams', (req, res) => {
   });
 });
 
+// --- ROUTES POUR PAGES STATIQUES (URLs 'propres' sans .html)
+// Ces routes servent directement les fichiers HTML présents dans /public
+app.get('/resultats', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'resultats.html'));
+});
+
+app.get('/classement', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'classement.html'));
+});
+
 // --- DÉMARRAGE DU SERVEUR ---
 // On dit à l'application d'écouter sur le port défini (souvent 3000 en local, ou défini par Render)
 const PORT = process.env.PORT || 3000;
