@@ -35,11 +35,9 @@ Pages disponibles (URL complètes) :
 
 | Page | URL | Fonction |
 |------|-----|----------|
-| 🏠 Accueil | `https://apiscore-doow.onrender.com/` | Page d'accueil (index.html) |
-| 📊 Résultats | `https://apiscore-doow.onrender.com/resultats.html` | Page résultats (fichier `resultats.html`) |
-| 🏆 Classement | `https://apiscore-doow.onrender.com/classement.html` | Page classement (fichier `classement.html`) |
-
-Remarque : la route propre `/resultats` (sans `.html`) retourne actuellement 404. Les pages statiques sont servies sous leurs noms de fichiers (`resultats.html`, `classement.html`). Si vous souhaitez des URLs propres sans extensions, il faudra ajouter une réécriture côté serveur (ou renommer/fournir une route Express qui redirige `/resultats` vers `/resultats.html`).
+| 🏠 Accueil | `https://apiscore-doow.onrender.com/` | Page d'accueil |
+| 📊 Résultats | `https://apiscore-doow.onrender.com/resultats` | Page résultats avec tableau des matchs |
+| 🏆 Classement | `https://apiscore-doow.onrender.com/classement` | Page classement avec statistiques des équipes |
 
 ---
 
