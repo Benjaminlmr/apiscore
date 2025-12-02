@@ -7,61 +7,39 @@
 
 ## 1️⃣ URL de l'API
 
-### ⚠️ À COMPLÉTER PAR L'ÉTUDIANT
-L'API doit être déployée sur une plateforme d'hébergement (Render, Heroku, etc.).
+L'API est déployée sur Render et accessible publiquement :
 
-**Exemple attendu** : `https://votre-projet.onrender.com`
+- **Base API** : `https://apiscore-doow.onrender.com`
 
-### Endpoints disponibles
-L'API expose les endpoints suivants :
+### Endpoints disponibles (URL complètes)
 
-- ✅ **Health Check** : `GET https://…/api/healthz`
+- ✅ **Health Check** : `GET https://apiscore-doow.onrender.com/api/healthz`
   - Réponse : `{ "ok": true }`
   - Objectif : Vérifier que l'API est en ligne
 
-- ✅ **Récupérer les matchs** : `GET https://…/api/matches`
+- ✅ **Récupérer les matchs** : `GET https://apiscore-doow.onrender.com/api/matches`
   - Réponse : Liste JSON de tous les matchs avec les noms des équipes
-  - Format : 
-    ```json
-    [
-      {
-        "match_id": 1,
-        "match_date": "2025-01-15",
-        "home_team": "Paris SC",
-        "away_team": "Lyon FC",
-        "home_score": 3,
-        "away_score": 1
-      }
-    ]
-    ```
 
-- ✅ **Récupérer les équipes (classement)** : `GET https://…/api/teams`
+- ✅ **Récupérer les équipes (classement)** : `GET https://apiscore-doow.onrender.com/api/teams`
   - Réponse : Classement des équipes avec statistiques
 
 ---
 
 ## 2️⃣ URL du Frontend
 
-### ⚠️ À COMPLÉTER PAR L'ÉTUDIANT
-Le frontend doit être déployé sur une plateforme d'hébergement (Render, Netlify, etc.).
+Le frontend est servi par le même service Render que l'API :
 
-**Exemple attendu** : `https://votre-front.onrender.com`
+- **Base Frontend** : `https://apiscore-doow.onrender.com`
 
-### Pages disponibles
+Pages disponibles (URL complètes) :
 
 | Page | URL | Fonction |
 |------|-----|----------|
-| 🏠 Accueil | `/` | Page d'accueil avec présentation du projet |
-| 📊 Résultats | `/resultats` | Tableau des matchs avec recherche et pagination |
-| 🏆 Classement | `/classement` | Classement des équipes avec statistiques |
+| 🏠 Accueil | `https://apiscore-doow.onrender.com/` | Page d'accueil (index.html) |
+| 📊 Résultats | `https://apiscore-doow.onrender.com/resultats.html` | Page résultats (fichier `resultats.html`) |
+| 🏆 Classement | `https://apiscore-doow.onrender.com/classement.html` | Page classement (fichier `classement.html`) |
 
-### Fonctionnalités du Frontend
-- Navigation entre les pages
-- Récupération des données via l'API
-- Tableau des matchs avec tri et pagination
-- Classement des équipes
-- Responsive design
-- Gestion d'erreurs avec message utilisateur
+Remarque : la route propre `/resultats` (sans `.html`) retourne actuellement 404. Les pages statiques sont servies sous leurs noms de fichiers (`resultats.html`, `classement.html`). Si vous souhaitez des URLs propres sans extensions, il faudra ajouter une réécriture côté serveur (ou renommer/fournir une route Express qui redirige `/resultats` vers `/resultats.html`).
 
 ---
 
@@ -194,8 +172,8 @@ CREATE TABLE matches (
 - [x] Frontend avec page classement (`/classement`)
 - [x] README.md complet dans le dépôt GitHub
 - [x] Schéma de base de données documenté
-- [ ] API déployée en ligne (URL à fournir)
-- [ ] Frontend déployé en ligne (URL à fournir)
+- [x] API déployée en ligne (`https://apiscore-doow.onrender.com`)
+- [x] Frontend déployé en ligne (`https://apiscore-doow.onrender.com`)
 - [ ] Données de test (6 matchs minimum)
 
 ---

@@ -1,7 +1,7 @@
-// Configuration - À adapter selon ton API
-const API_BASE_URL = window.location.hostname === 'localhost'
+// Configuration - utilise l'API relative quand le frontend et l'API sont servis depuis le même domaine
+const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:3000/api'
-    : 'https://apiscore-7ek0.onrender.com/api';  // Remplace par l'URL de ton API Render
+    : `${window.location.origin}/api`;
 
 // Éléments du DOM
 const loadingEl = document.getElementById('loading');
