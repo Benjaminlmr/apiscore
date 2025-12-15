@@ -4,6 +4,8 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
+// Mode mock pour développement / démo si la base n'est pas accessible
+const USE_MOCK = process.env.USE_MOCK === 'true';
 // On crée l'application (le serveur)
 const app = express();
 // On configure CORS pour accepter les requêtes venant d'ailleurs (du front)
@@ -11,23 +13,29 @@ app.use(cors());
 // On sert les fichiers statiques du dossier "public" (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 // --- CONFIGURATION DE LA BASE DE DONNÉES ---
-// On récupère les infos de connexion depuis les variables d'environnement (le fichier .env)
-// C'est sécurisé : le mot de passe n'est pas écrit ici !
-const connection = mysql.createConnection({
-host: process.env.DB_HOST,
-port: process.env.DB_PORT,
-user: process.env.DB_USER,
-password: process.env.DB_PASSWORD,
-database: process.env.DB_NAME
-});
-// On teste la connexion au démarrage
-connection.connect((err) => {
-if (err) {
-console.error('Erreur de connexion à la base de données :', err);
+// Si on est en mode mock, on n'essaie pas de se connecter à la DB
+let connection = null;
+if (!USE_MOCK) {
+  // On récupère les infos de connexion depuis les variables d'environnement (le fichier .env)
+  // C'est sécurisé : le mot de passe n'est pas écrit ici !
+  connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+  });
+  // On teste la connexion au démarrage
+  connection.connect((err) => {
+    if (err) {
+      console.error('Erreur de connexion à la base de données :', err);
+    } else {
+      console.log('Connecté à la base de données MySQL sur Aiven !');
+    }
+  });
 } else {
-console.log('Connecté à la base de données MySQL sur Aiven !');
+  console.log('USE_MOCK=true : le serveur utilisera des données factices, pas de connexion DB.');
 }
-});
 
 // --- LES ROUTES DE L'API (Les URLs disponibles) ---
 // 1. Route de santé (Health Check)
