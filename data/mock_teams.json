@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Paris SC",
+    "city": "Paris",
+    "played": 2,
+    "wins": 2,
+    "draws": 0,
+    "losses": 0,
+    "points": 6
+  },
+  {
+    "id": 2,
+    "name": "Lyon FC",
+    "city": "Lyon",
+    "played": 2,
+    "wins": 1,
+    "draws": 0,
+    "losses": 1,
+    "points": 3
+  },
+  {
+    "id": 3,
+    "name": "Marseille OL",
+    "city": "Marseille",
+    "played": 2,
+    "wins": 0,
+    "draws": 1,
+    "losses": 1,
+    "points": 1
+  },
+  {
+    "id": 4,
+    "name": "Nice FC",
+    "city": "Nice",
+    "played": 2,
+    "wins": 0,
+    "draws": 2,
+    "losses": 0,
+    "points": 2
+  }
+]

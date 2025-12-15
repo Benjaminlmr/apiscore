@@ -1,0 +1,62 @@
+[
+  {
+    "match_id": 1,
+    "match_date": "2025-01-15",
+    "home_team_id": 1,
+    "away_team_id": 2,
+    "home_score": 3,
+    "away_score": 1,
+    "home_team": "Paris SC",
+    "away_team": "Lyon FC"
+  },
+  {
+    "match_id": 2,
+    "match_date": "2025-01-16",
+    "home_team_id": 3,
+    "away_team_id": 4,
+    "home_score": 2,
+    "away_score": 2,
+    "home_team": "Marseille OL",
+    "away_team": "Nice FC"
+  },
+  {
+    "match_id": 3,
+    "match_date": "2025-01-17",
+    "home_team_id": 5,
+    "away_team_id": 6,
+    "home_score": 1,
+    "away_score": 0,
+    "home_team": "Toulouse FC",
+    "away_team": "Bordeaux FC"
+  },
+  {
+    "match_id": 4,
+    "match_date": "2025-01-18",
+    "home_team_id": 2,
+    "away_team_id": 3,
+    "home_score": 4,
+    "away_score": 2,
+    "home_team": "Lyon FC",
+    "away_team": "Marseille OL"
+  },
+  {
+    "match_id": 5,
+    "match_date": "2025-01-19",
+    "home_team_id": 4,
+    "away_team_id": 5,
+    "home_score": 1,
+    "away_score": 1,
+    "home_team": "Nice FC",
+    "away_team": "Toulouse FC"
+  },
+  {
+    "match_id": 6,
+    "match_date": "2025-01-20",
+    "home_team_id": 6,
+    "away_team_id": 1,
+    "home_score": 2,
+    "away_score": 3,
+    "home_team": "Bordeaux FC",
+    "away_team": "Paris SC"
+  }
+]

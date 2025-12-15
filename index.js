@@ -38,7 +38,14 @@ res.json({ ok: true });
 });
 // 2. Route pour récupérer les matchs
 // Quand on appellera GET /api/matches, on demandera la liste à la base de données avec les noms des équipes
+const USE_MOCK = process.env.USE_MOCK === 'true';
 app.get('/api/matches', (req, res) => {
+  if (USE_MOCK) {
+    // Répondre avec des données mock (utile si la DB n'est pas accessible)
+    const mock = require(path.join(__dirname, 'data', 'mock_matches.json'));
+    return res.json(mock);
+  }
+
   // On écrit une requête SQL avec JOIN pour récupérer les noms des équipes
   const query = `
     SELECT 
@@ -70,6 +77,10 @@ app.get('/api/matches', (req, res) => {
 
 // 3. Route pour récupérer le classement des équipes avec leurs statistiques
 app.get('/api/teams', (req, res) => {
+  if (USE_MOCK) {
+    const mockTeams = require(path.join(__dirname, 'data', 'mock_teams.json'));
+    return res.json(mockTeams);
+  }
   // Récupérer les équipes
   connection.query('SELECT team_id, name, city FROM `teams`', (errTeams, teams) => {
     if (errTeams) {
